@@ -1,0 +1,30 @@
+Host *
+  ServerAliveCountMax 3
+  ServerAliveInterval 10
+  TCPKeepAlive yes
+
+Host mpel8
+  HostName mpel8.eecs.umich.edu
+  user cblocker
+
+Host worldcrusher
+  HostName mpel8.eecs.umich.edu
+  user cblocker
+
+Host ir58
+  HostName ir58.eecs.umich.edu
+  User cblocker
+
+Host ironwood
+  HostName ironwood.eecs.umich.edu
+  User cblocker
+
+Host flux
+  HostName flux-login.engin.umich.edu
+  User cblocker
+  ProxyCommand ssh cblocker@ir58.eecs.umich.edu nc %h %p
+
+Host nyx
+  HostName nyx-login.engin.umich.edu
+  User cblocker
+  ProxyCommand ssh cblocker@ir58.eecs.umich.edu nc %h %p

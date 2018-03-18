@@ -1,0 +1,29 @@
+[user]
+	name = Cameron Blocker
+	email = cameronjblocker@gmail.com
+[push]
+	default = simple
+[core]
+	editor = subl -n -w
+[github]
+	user = ekisu
+[ghi]
+	token = !security find-internet-password -a ekisu -s github.com -l 'ghi token' -w
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	prompt = false
+[alias]
+	co = checkout
+	cob = checkout -b
+	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
