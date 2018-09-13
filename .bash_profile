@@ -1,28 +1,100 @@
-source ~/Documents/Programming/dotfiles/.git-prompt.sh
-
-alias hgrep='history|grep'
-alias ack='ack-5.16'
-alias compile11='g++ -Wall -g -std=c++11 *.cpp -o'
-alias nasm='nasm425'
-
-# shortcut aliases
-alias prgrm='cd ~/Documents/Programming/'
-alias rch='cd ~/Documents/Research/'
-alias py='cd ~/Documents/Programming/Python/'
+#!/bin/bash
+#
+# .bash_profile
+# this is run once for each login
+# and contains environment variables
+# that don't need to be redefined in child shells
+#
+# Cameron Blocker <cameronjblocker@gmail.com>
 
 export EDITOR='subl -n -w '
 
-export BROWSER=/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
-
 # Personal PATH extensions
-export PATH=/Users/cblocker/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # Add colors to terminal
 export CLICOLOR=1
 export LSCOLORS=GxFxBxDxCxegedabagaced
 
-# Style Prompt
-export PS1='\!-[\h:\W]$(__git_ps1)->'
+# Style Prompt (could go in bash_profile, but depends on .git-prompt)
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+export PROMPT_COMMAND='__git_ps1 "\!-[\h:\W]" "-> "'
+# export PS1='\!-[\h:\W]$(__git_ps1)->'
 
-test -r /sw/bin/init.sh && . /sw/bin/init.sh
+
+
+
+##### The code below determines our dotfile dir. I would put it in its own
+##### script in the dotfiles directory, but then I wouldn't be able to use
+##### it to find where the dotfile directory is...
+# it doesn't need to go in bashrc since we'll only use it once.
+# Helper function.
+rreadlink() ( # execute function in a *subshell* to localize the effect of `cd`, ...
+
+  local target=$1 fname targetDir readlinkexe=$(command -v readlink) CDPATH= 
+
+  # Since we'll be using `command` below for a predictable execution
+  # environment, we make sure that it has its original meaning.
+  { \unalias command; \unset -f command; } &>/dev/null
+
+  while :; do # Resolve potential symlinks until the ultimate target is found.
+      [[ -L $target || -e $target ]] || { command printf '%s\n' "$FUNCNAME: ERROR: '$target' does not exist." >&2; return 1; }
+      command cd "$(command dirname -- "$target")" # Change to target dir; necessary for correct resolution of target path.
+      fname=$(command basename -- "$target") # Extract filename.
+      [[ $fname == '/' ]] && fname='' # !! curiously, `basename /` returns '/'
+      if [[ -L $fname ]]; then
+        # Extract [next] target path, which is defined
+        # relative to the symlink's own directory.
+        if [[ -n $readlinkexe ]]; then # Use `readlink`.
+          target=$("$readlinkexe" -- "$fname")
+        else # `readlink` utility not available.
+          # Parse `ls -l` output, which, unfortunately, is the only POSIX-compliant 
+          # way to determine a symlink's target. Hypothetically, this can break with
+          # filenames containig literal ' -> ' and embedded newlines.
+          target=$(command ls -l -- "$fname")
+          target=${target#* -> }
+        fi
+        continue # Resolve [next] symlink target.
+      fi
+      break # Ultimate target reached.
+  done
+  targetDir=$(command pwd -P) # Get canonical dir. path
+  # Output the ultimate target's canonical path.
+  # Note that we manually resolve paths ending in /. and /.. to make sure we
+  # have a normalized path.
+  if [[ $fname == '.' ]]; then
+    command printf '%s\n' "${targetDir%/}"
+  elif  [[ $fname == '..' ]]; then
+    # Caveat: something like /var/.. will resolve to /private (assuming
+    # /var@ -> /private/var), i.e. the '..' is applied AFTER canonicalization.
+    command printf '%s\n' "$(command dirname -- "${targetDir}")"
+  else
+    command printf '%s\n' "${targetDir%/}/$fname"
+  fi
+)
+
+# Determine ultimate script dir. using the helper function.
+# Note that the helper function returns a canonical path.
+export dotfileDir=$(dirname -- "$(rreadlink "$BASH_SOURCE")")
+
+### This goes last so it can use the above environment
+# -e for exist instead of -f for regular file since it can be symlink
+if [ -e ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+if [ -x "$(which hostname)" ]; then
+      case "$(hostname -s)" in
+        Marvin)
+          # source specific paths and vars for Marvin (macOS laptop)
+          source $dotfileDir/marvin.bash_profile
+          ;;
+        ir*)
+          # source specific paths and vars for ir research machines
+          echo "hello ir"
+          ;;
+      esac
+fi
 
