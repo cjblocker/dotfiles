@@ -7,20 +7,31 @@
 #
 # Cameron Blocker <cameronjblocker@gmail.com>
 
-# Use sublime text if available, otherwise vim
-if [ -x "$(which subl)" ]; then
+# Personal PATH extensions
+export PATH=$HOME/bin:$PATH
+
+# Setup Editor config (PATH to subl needs to be set first)
+# Use sublime text if available and not ssh, otherwise vim
+if [ -z $SSH_CLIENT ] && [ -x "$(which subl)" ]; then
   export EDITOR='subl -n -w '
 else
   export EDITOR='vim '
 fi
 export GIT_EDITOR=$EDITOR
+# a check that doesn't depend on the environment VVV
+# SSH_IP=$(who am i | perl -ne '/.*\((.+)\)/ && print "$1";')
 
-# Personal PATH extensions
-export PATH=$HOME/bin:$PATH
 
 # Add colors to terminal
+# for Mac
 export CLICOLOR=1
 export LSCOLORS=GxFxBxDxCxegedabagaced
+# for Linux
+# alias ls='ls --color'
+# di-directory, fi-file, ln-symlink, pi-fifo, so-socket, bd-block, cd-character, 
+# or-orphan symlink, mi-non-existed file pointed to by orphan, ex-executable
+export LS_COLORS='di=36:fi=0:ln=35:pi=0:so=0:bd=0:cd=0:or=5:mi=5:ex=0:__pycache__=90'
+
 
 # Style Prompt (could go in bashrc since it depends on .git-prompt)
 export GIT_PS1_SHOWCOLORHINTS=1

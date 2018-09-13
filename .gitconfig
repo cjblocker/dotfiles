@@ -27,3 +27,6 @@
 	cob = checkout -b
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+	ls = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
