@@ -6,9 +6,9 @@
 [core]
 	editor = subl -n -w
 [github]
-	user = ekisu
+	user = cjblocker
 [ghi]
-	token = !security find-internet-password -a ekisu -s github.com -l 'ghi token' -w
+	token = !security find-internet-password -a cjblocker -s github.com -l 'ghi token' -w
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff
 [merge "jupyternotebook"]
