@@ -12,7 +12,7 @@ export PATH=$HOME/bin:$PATH
 
 # Setup Editor config (PATH to subl needs to be set first)
 # Use sublime text if available and not ssh, otherwise vim
-if [ -z $SSH_CLIENT ] && [ -x "$(which subl)" ]; then
+if [ -z "$SSH_CLIENT" ] && [ -x "$(which subl)" ]; then
   export EDITOR='subl -n -w '
 else
   export EDITOR='vim '
@@ -30,7 +30,7 @@ export LSCOLORS=GxFxBxDxCxegedabagaced
 # alias ls='ls --color'
 # di-directory, fi-file, ln-symlink, pi-fifo, so-socket, bd-block, cd-character, 
 # or-orphan symlink, mi-non-existed file pointed to by orphan, ex-executable
-export LS_COLORS='di=36:fi=0:ln=35:pi=0:so=0:bd=0:cd=0:or=5:mi=5:ex=0:__pycache__=90'
+export LS_COLORS='di=36:fi=0:ln=35:pi=0:so=0:bd=0:cd=0:or=5:mi=5:ex=32'
 
 
 # Style Prompt (could go in bashrc since it depends on .git-prompt)
