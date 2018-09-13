@@ -23,7 +23,7 @@ if [ -x "$(which hostname)" ]; then
           ;;
         ir*)
           # source specific paths and vars for ir research machines
-          echo "hello ir"
-          ;;
+          source $dotfileDir/ir.bashrc
+	  ;;
       esac
 fi
