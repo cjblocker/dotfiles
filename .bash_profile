@@ -7,7 +7,13 @@
 #
 # Cameron Blocker <cameronjblocker@gmail.com>
 
-export EDITOR='subl -n -w '
+# Use sublime text if available, otherwise vim
+if [ -x "$(which subl)" ]; then
+  export EDITOR='subl -n -w '
+else
+  export EDITOR='vim '
+fi
+export GIT_EDITOR=$EDITOR
 
 # Personal PATH extensions
 export PATH=$HOME/bin:$PATH
@@ -16,7 +22,7 @@ export PATH=$HOME/bin:$PATH
 export CLICOLOR=1
 export LSCOLORS=GxFxBxDxCxegedabagaced
 
-# Style Prompt (could go in bash_profile, but depends on .git-prompt)
+# Style Prompt (could go in bashrc since it depends on .git-prompt)
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
@@ -29,6 +35,7 @@ export PROMPT_COMMAND='__git_ps1 "\!-[\h:\W]" "-> "'
 ##### The code below determines our dotfile dir. I would put it in its own
 ##### script in the dotfiles directory, but then I wouldn't be able to use
 ##### it to find where the dotfile directory is...
+# copied from https://stackoverflow.com/questions/24112727/relative-paths-based-on-file-location-instead-of-current-working-directory
 # it doesn't need to go in bashrc since we'll only use it once.
 # Helper function.
 rreadlink() ( # execute function in a *subshell* to localize the effect of `cd`, ...
@@ -98,3 +105,4 @@ if [ -x "$(which hostname)" ]; then
       esac
 fi
 
+### End .bash_profile ### (anything below this was auto appended)
