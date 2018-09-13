@@ -30,7 +30,7 @@ export LSCOLORS=GxFxBxDxCxegedabagaced
 # alias ls='ls --color'
 # di-directory, fi-file, ln-symlink, pi-fifo, so-socket, bd-block, cd-character, 
 # or-orphan symlink, mi-non-existed file pointed to by orphan, ex-executable
-export LS_COLORS='di=36:fi=0:ln=35:pi=31:so=31:bd=31:cd=31:or=101;35:mi=101:ex=32'
+export LS_COLORS='di=36:fi=0:ln=35:pi=31:so=31:bd=31:cd=31:or=47;35:mi=101:ex=32'
 # 0  - white (files)
 # 31 - red (i.e. this is abnormal)
 # 32 - green (executables)
