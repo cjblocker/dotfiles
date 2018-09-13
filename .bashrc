@@ -14,7 +14,7 @@ source $dotfileDir/.git-prompt.sh
 # some aliases that should work on any system
 alias hgrep='history|grep'
 alias ducks='sudo du -cksh * | sort -n | head -50'
-
+alias ...='../..'
 
 if [ -x "$(which hostname)" ]; then
       case "$(hostname -s)" in

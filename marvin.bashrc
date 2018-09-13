@@ -17,3 +17,7 @@ alias nasm='nasm425'
 alias prgrm='cd ~/Documents/Programming/'
 alias rch='cd ~/Documents/Research/'
 alias py='cd ~/Documents/Programming/Python/'
+
+# some convenience aliases for editing configs
+alias bashrc=$dotfileDir/marvin.bashrc
+alias bash_profile=$dotfileDir/marvin.bash_profile

@@ -30,13 +30,16 @@ export LSCOLORS=GxFxBxDxCxegedabagaced
 # alias ls='ls --color'
 # di-directory, fi-file, ln-symlink, pi-fifo, so-socket, bd-block, cd-character, 
 # or-orphan symlink, mi-non-existed file pointed to by orphan, ex-executable
-export LS_COLORS='di=36:fi=0:ln=35:pi=31:so=31:bd=31:cd=31:or=5;35:mi=5:ex=32'
+export LS_COLORS='di=36:fi=0:ln=35:pi=31:so=31:bd=31:cd=31:or=101;35:mi=101:ex=32'
 # 0  - white (files)
 # 31 - red (i.e. this is abnormal)
 # 32 - green (executables)
 # 35 - purple (symlinks)
 # 36 - cyan (directores)
-# 5  - blinking (broken)
+# 5  - blinking (broken) but was annoying so...
+# 101 - light red bg (broken)
+# full list at http://linux-sxs.org/housekeeping/lscolors.html
+
 
 # Style Prompt (could go in bashrc since it depends on .git-prompt)
 export GIT_PS1_SHOWCOLORHINTS=1
@@ -44,8 +47,6 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 export PROMPT_COMMAND='__git_ps1 "\!-[\h:\W]" "-> "'
 # export PS1='\!-[\h:\W]$(__git_ps1)->'
-
-
 
 
 ##### The code below determines our dotfile dir. I would put it in its own
