@@ -25,6 +25,10 @@ if [ -x "$(which hostname)" ]; then
         ir*)
           # source specific paths and vars for ir research machines
           source $dotfileDir/ir.bashrc
-	  ;;
+	        ;;
+        iv*) # same as above
+          # source specific paths and vars for ir research machines
+          source $dotfileDir/ir.bashrc
+          ;;
       esac
 fi
