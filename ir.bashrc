@@ -1,3 +1,4 @@
+#!/bin/bash
 
 alias prgrm='cd ~/Documents/Programming/'
 alias rch='cd ~/Documents/Research/'

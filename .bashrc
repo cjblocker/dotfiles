@@ -30,5 +30,8 @@ if [ -x "$(which hostname)" ]; then
           # source specific paths and vars for ir research machines
           source $dotfileDir/ir.bashrc
           ;;
+        Apollo)
+	  source $dotfileDir/ir.bashrc
+          ;;	  
       esac
 fi

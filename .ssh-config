@@ -3,13 +3,9 @@ Host *
   ServerAliveInterval 10
   TCPKeepAlive yes
 
-Host mpel8
-  HostName mpel8.eecs.umich.edu
-  user cblocker
-
-Host worldcrusher
-  HostName mpel8.eecs.umich.edu
-  user cblocker
+Host loj
+  HostName ir58.eecs.umich.edu
+  User cblocker
 
 Host ir58
   HostName ir58.eecs.umich.edu
@@ -28,3 +24,8 @@ Host nyx
   HostName nyx-login.engin.umich.edu
   User cblocker
   ProxyCommand ssh cblocker@ir58.eecs.umich.edu nc %h %p
+
+Host apollo
+  HostName cjblocker.ddns.net
+  Port 26
+  User cblocker

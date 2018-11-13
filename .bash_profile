@@ -15,7 +15,9 @@ export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 if [ -z "$SSH_CLIENT" ] && [ -x "$(which subl)" ]; then
   export EDITOR='subl -n -w '
 else
-  export EDITOR='vim '
+  if [ -x "$(which vim)" ]; then
+    export EDITOR='vim '
+  fi
 fi
 export GIT_EDITOR=$EDITOR
 # a check that doesn't depend on the environment VVV
