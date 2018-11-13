@@ -8,7 +8,7 @@
 # Cameron Blocker <cameronjblocker@gmail.com>
 
 # Personal PATH extensions
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 # Setup Editor config (PATH to subl needs to be set first)
 # Use sublime text if available and not ssh, otherwise vim
