@@ -10,7 +10,7 @@
 # In random situations, like using scp?, .bash_profile
 # is not sourced before .bashrc and so we wrap this
 # in an if to keep it from erroring
-if [ -z "$dotfileDir"]; then
+if [ -z "$dotfileDir" ]; then
   source $dotfileDir/.git-prompt.sh
 fi
 
