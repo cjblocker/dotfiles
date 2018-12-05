@@ -26,7 +26,7 @@ alias hgrep='history|grep'
 alias ducks='sudo du -cksh * | sort -n | head -50'
 alias ...='../..'
 
-if [ -x "$(which hostname)" ]; then
+if [ -z "$dotfileDir" ] && [ -x "$(which hostname)" ]; then
       case "$(hostname -s)" in
         Marvin)
           # source specific paths and vars for Marvin (macOS laptop)
