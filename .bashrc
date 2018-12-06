@@ -10,12 +10,12 @@
 # In random situations, like using scp?, .bash_profile
 # is not sourced before .bashrc and so we wrap this
 # in an if to keep it from erroring
-if [ -z "$dotfileDir" ]; then
+if [[ $dotfileDir ]]; then
   source $dotfileDir/.git-prompt.sh
 fi
 
 # Allow us to exit ssh gracefully on reboot
-if [ -z "$SSH_CLIENT" ]; then
+if [[ $SSH_CLIENT ]]; then
   alias reboot='shutdown --reboot 0 ; exit'
 fi
 
@@ -26,7 +26,7 @@ alias hgrep='history|grep'
 alias ducks='sudo du -cksh * | sort -n | head -50'
 alias ...='../..'
 
-if [ -z "$dotfileDir" ] && [ -x "$(which hostname)" ]; then
+if [[ $dotfileDir ]] && [ -x "$(which hostname)" ]; then
       case "$(hostname -s)" in
         Marvin)
           # source specific paths and vars for Marvin (macOS laptop)
