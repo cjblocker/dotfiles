@@ -16,7 +16,7 @@ fi
 
 # Allow us to exit ssh gracefully on reboot
 if [[ $SSH_CLIENT ]]; then
-  alias reboot='shutdown --reboot 0 ; exit'
+  alias reboot='shutdown --reboot 0 > /dev/null ; exit'
 fi
 
 

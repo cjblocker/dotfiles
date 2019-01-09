@@ -29,3 +29,7 @@ Host apollo
   HostName cjblocker.ddns.net
   Port 26
   User cblocker
+
+Host autograder
+  HostName autograder.eecs.umich.edu
+  User eecs556

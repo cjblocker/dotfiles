@@ -9,7 +9,7 @@
 
 
 
-alias ack='ack-5.16'
+# alias ack='ack-5.16'
 alias compile11='g++ -Wall -g -std=c++11 *.cpp -o'
 alias nasm='nasm425'
 
