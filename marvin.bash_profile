@@ -22,3 +22,10 @@ test -r /sw/bin/init.sh && . /sw/bin/init.sh
 # Nim Lang
 export PATH=/Users/cblocker/.nimble/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Their should be a better place than this than my bin folder...
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cblocker/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/cblocker/bin/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cblocker/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/cblocker/bin/google-cloud-sdk/completion.bash.inc'; fi

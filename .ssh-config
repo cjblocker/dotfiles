@@ -33,3 +33,8 @@ Host apollo
 Host autograder
   HostName autograder.eecs.umich.edu
   User eecs556
+  RequestTTY force
+
+Host autotest
+  HostName autograder.eecs.umich.edu
+  User autotest
