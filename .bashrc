@@ -24,6 +24,7 @@ fi
 alias sudo='sudo ' # to allow aliases after sudo
 alias hgrep='history|grep'
 alias ducks='sudo du -cksh * | sort -n | head -50'
+alias cd='cd ' # allow aliases after cd
 alias ...='../..'
 
 if [[ $dotfileDir ]] && [ -x "$(which hostname)" ]; then

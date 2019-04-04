@@ -14,10 +14,11 @@ alias compile11='g++ -Wall -g -std=c++11 *.cpp -o'
 alias nasm='nasm425'
 
 # shortcut aliases
-alias prgrm='cd ~/Documents/Programming/'
-alias rch='cd ~/Documents/Research/'
-alias py='cd ~/Documents/Programming/Python/'
+alias work='cd ~/Workspace'
+alias rch='cd ~/Workspace/research/'
+alias ipy='ipython'
 
 # some convenience aliases for editing configs
 alias bashrc=$dotfileDir/marvin.bashrc
 alias bash_profile=$dotfileDir/marvin.bash_profile
+alias subl="subl "
