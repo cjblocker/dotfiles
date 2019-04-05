@@ -22,3 +22,5 @@ alias ipy='ipython'
 alias bashrc=$dotfileDir/marvin.bashrc
 alias bash_profile=$dotfileDir/marvin.bash_profile
 alias subl="subl "
+
+alias ducks="paste -d'  ' <(du -cksh * | cut -f1) <(CLICOLOR_FORCE=1 ls -1d * && echo total) | sort -h | tail -n 50"

@@ -23,7 +23,8 @@ fi
 # some aliases that should work on any system
 alias sudo='sudo ' # to allow aliases after sudo
 alias hgrep='history|grep'
-alias ducks='sudo du -cksh * | sort -n | head -50'
+export GLOBIGNORE=".:.."
+alias ducks='du -cksh * | sort -h | tail -n 50' #override for color on marvin
 alias cd='cd ' # allow aliases after cd
 alias ...='../..'
 
