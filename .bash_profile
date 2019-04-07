@@ -42,14 +42,26 @@ export LS_COLORS='di=36:fi=0:ln=35:pi=31:so=31:bd=31:cd=31:or=47;35:mi=101:ex=32
 # 101 - light red bg (broken)
 # full list at http://linux-sxs.org/housekeeping/lscolors.html
 
+bold="\[\e[0;1m\]"
+underline="\[\e[0;4m\]"
+invert="\[\e[0;7m\]"
+purple="\[\e[0;35m\]"
+cyan="\[\e[0;36m\]"
+reset="\[\e[0m\]"
+
+function _venv_info {
+    [[ -n "$VIRTUAL_ENV" ]] && echo "($purple${VIRTUAL_ENV##*/}$reset)"
+}
 
 # Style Prompt (could go in bashrc since it depends on .git-prompt)
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
-export PROMPT_COMMAND='__git_ps1 "\!-[\h:\W]" "-> "'
+export PROMPT_COMMAND='__git_ps1 "$underline\!$reset[\h:$cyan\W$reset]$(_venv_info)" "-> "'
 # export PS1='\!-[\h:\W]$(__git_ps1)->'
 
+# Convenience Variable
+export W=~/Workspace
 
 ##### The code below determines our dotfile dir. I would put it in its own
 ##### script in the dotfiles directory, but then I wouldn't be able to use

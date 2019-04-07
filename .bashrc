@@ -27,6 +27,7 @@ export GLOBIGNORE=".:.."
 alias ducks='du -cksh * | sort -h | tail -n 50' #override for color on marvin
 alias cd='cd ' # allow aliases after cd
 alias ...='../..'
+alias ll="ls -lA" # marvin overrides l with o
 
 if [[ $dotfileDir ]] && [ -x "$(which hostname)" ]; then
       case "$(hostname -s)" in

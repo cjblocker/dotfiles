@@ -27,12 +27,15 @@
 	cob = checkout -b
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
-	ls = status
+	ls = status -s
+	stat = status
+	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	wdiff = diff --color-words
 	root = rev-parse --show-toplevel
 	exec = "!exec "
 	# https://stackoverflow.com/questions/38057261/git-config-alias-escaping
 	quote-string = "!read -r l; printf \\\"!; printf %s \"$l\" | sed 's/\\([\\\"]\\)/\\\\\\1/g'; printf \" #\\\"\\n\" #"
 	quote-string-undo = "!read -r l; printf %s \"$l\" | sed 's/\\\\\\([\\\"]\\)/\\1/g'; printf \"\\n\" #"
-	open = "!f() { open $(git config remote.origin.url| sed \"s#git@\\(.*\\):\\(.*\\).git#https://\\1/\\2#\")/tree/$(git symbolic-ref --quiet --short HEAD ); }; f #"
+	open = "!f() { open $(git config remote.$(git remote | head -n1).url| sed \"s#git@\\(.*\\):\\(.*\\).git#https://\\1/\\2#\"| sed \"s#\\(hg::\\)*\\(.*\\)\\(.git\\)*#\\2#\"); }; f #"
