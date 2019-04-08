@@ -12,12 +12,15 @@
 # in an if to keep it from erroring
 if [[ $dotfileDir ]]; then
   source $dotfileDir/.git-prompt.sh
+  # git autocompletions
+  source $dotfileDir/git-completion.bash
 fi
 
 # Allow us to exit ssh gracefully on reboot
 if [[ $SSH_CLIENT ]]; then
   alias reboot='shutdown --reboot 0 > /dev/null ; exit'
 fi
+
 
 
 # some aliases that should work on any system

@@ -49,7 +49,7 @@ purple="\[\e[0;35m\]"
 cyan="\[\e[0;36m\]"
 reset="\[\e[0m\]"
 
-function _venv_info {
+function _venv_info { # https://stackoverflow.com/a/30541526
     [[ -n "$VIRTUAL_ENV" ]] && echo "($purple${VIRTUAL_ENV##*/}$reset)"
 }
 
@@ -131,7 +131,7 @@ if [ -x "$(which hostname)" ]; then
           ;;
         ir*)
           # source specific paths and vars for ir research machines
-          echo "hello ir"
+          #echo "hello ir"
           ;;
       esac
 fi
