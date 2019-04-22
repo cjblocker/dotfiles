@@ -11,6 +11,14 @@ Host ir58
   HostName ir58.eecs.umich.edu
   User cblocker
 
+Host ir62
+  HostName ir62.eecs.umich.edu
+  User cblocker
+
+Host titan
+  HostName ir62.eecs.umich.edu
+  User cblocker
+
 Host ironwood
   HostName ironwood.eecs.umich.edu
   User cblocker
@@ -33,7 +41,6 @@ Host apollo
 Host autograder
   HostName autograder.eecs.umich.edu
   User eecs556
-  RequestTTY force
 
 Host autotest
   HostName autograder.eecs.umich.edu
