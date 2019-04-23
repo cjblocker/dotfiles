@@ -21,7 +21,16 @@ if [[ $SSH_CLIENT ]]; then
   alias reboot='shutdown --reboot 0 > /dev/null ; exit'
 fi
 
+bold="\[\e[0;1m\]"
+underline="\[\e[0;4m\]"
+invert="\[\e[0;7m\]"
+purple="\[\e[0;35m\]"
+cyan="\[\e[0;36m\]"
+reset="\[\e[0m\]"
 
+function _venv_info { # https://stackoverflow.com/a/30541526
+    [[ -n "$VIRTUAL_ENV" ]] && echo "($purple${VIRTUAL_ENV##*/}$reset)"
+}
 
 # some aliases that should work on any system
 alias sudo='sudo ' # to allow aliases after sudo

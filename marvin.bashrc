@@ -26,3 +26,5 @@ alias subl="subl "
 alias ducks="paste -d'  ' <(du -cksh * | cut -f1) <(CLICOLOR_FORCE=1 ls -1d * && echo total) | sort -h | tail -n 50"
 
 alias ll="ls -oA"
+
+source /usr/local/bin/virtualenvwrapper.sh

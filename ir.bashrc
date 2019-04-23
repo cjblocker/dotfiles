@@ -15,3 +15,4 @@ alias lookup="find /n/ironwood/y/fessler/l/tex/biblio/b2 $FINDARG | /n/ironwood/
 alias lookieee="find /n/ironwood/y/fessler/l/tex/biblio/jour/ /n/ironwood/y/fessler/l/tex/biblio/b2 -type f -not -regex '.*\.swp' -not -regex '.*\.tex' | /n/ironwood/y/fessler/l/src/script/bib/b,grep \!* | more"
 alias @u='/n/ironwood/y/fessler/l/src/script/bib/@u'
 
+source .local/bin/virtualenvwrapper.sh
