@@ -29,7 +29,4 @@ if [ -f '/Users/cblocker/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/c
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/cblocker/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/cblocker/bin/google-cloud-sdk/completion.bash.inc'; fi
 
-# virtualenv wrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Workspace
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+

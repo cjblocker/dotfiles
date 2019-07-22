@@ -39,3 +39,5 @@
 	quote-string = "!read -r l; printf \\\"!; printf %s \"$l\" | sed 's/\\([\\\"]\\)/\\\\\\1/g'; printf \" #\\\"\\n\" #"
 	quote-string-undo = "!read -r l; printf %s \"$l\" | sed 's/\\\\\\([\\\"]\\)/\\1/g'; printf \"\\n\" #"
 	open = "!f() { open $(git config remote.$(git remote | head -n1).url| sed \"s#git@\\(.*\\):\\(.*\\).git#https://\\1/\\2#\"| sed \"s#\\(hg::\\)*\\(.*\\)\\(.git\\)*#\\2#\"); }; f #"
+	# https://stackoverflow.com/a/56510040/5026175
+	sh = "!perl -nE 'BEGIN {print \"git > \"} system \"git $_\"; print \"git > \"' #"

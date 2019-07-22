@@ -27,4 +27,11 @@ alias ducks="paste -d'  ' <(du -cksh * | cut -f1) <(CLICOLOR_FORCE=1 ls -1d * &&
 
 alias ll="ls -oA"
 
+alias term='open -a /Applications/Utilities/Terminal.app .'
+
+
+# virtualenv wrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Workspace
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh

@@ -15,8 +15,12 @@ Host ir62
   HostName ir62.eecs.umich.edu
   User cblocker
 
+Host ir74
+  HostName ir74.eecs.umich.edu
+  User cblocker
+
 Host titan
-  HostName ir62.eecs.umich.edu
+  HostName ir74.eecs.umich.edu
   User cblocker
   ControlMaster auto
   ControlPath ~/.ssh/%r@%h:%p
@@ -35,6 +39,9 @@ Host nyx
   HostName nyx-login.engin.umich.edu
   User cblocker
   ProxyCommand ssh cblocker@ir58.eecs.umich.edu nc %h %p
+
+Match host apollo exec iamhome
+  HostName apollo.local
 
 Host apollo
   HostName cjblocker.ddns.net

@@ -41,6 +41,38 @@ alias cd='cd ' # allow aliases after cd
 alias ...='../..'
 alias ll="ls -lA" # marvin overrides l with o
 
+
+function ch {
+  # No arguments returns us to our root host
+  if [[ $# -eq 0 ]]; then
+    if [[ $SSH_CLIENT ]]; then
+      exit 5 # flag to recurse out of ssh
+    else
+      return 1 # no-op; must provide host if already local
+    fi
+  fi
+  
+  # - as an argument pops the host stack
+  if [ $1 == "-" ]; then
+    if [[ $SSH_CLIENT ]]; then
+      exit
+    else
+      return 1
+    fi
+  fi
+
+  # ssh into the host, while preserving current directory
+  ssh $1 -t "cd ${PWD/#$HOME/\$HOME};exec \$SHELL -l"
+
+  # Catch intent to recurse to our root host
+  if [[ $? -eq 5 ]] && [[ $SSH_CLIENT ]]; then
+    exit 5 # continue to recurse out of ssh
+  else
+    return 0
+  fi
+}
+
+
 if [[ $dotfileDir ]] && [ -x "$(which hostname)" ]; then
       case "$(hostname -s)" in
         Marvin)

@@ -57,8 +57,32 @@ export LS_COLORS='di=36:fi=0:ln=35:pi=31:so=31:bd=31:cd=31:or=47;35:mi=101:ex=32
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUPSTREAM="auto"
-export PROMPT_COMMAND='__git_ps1 "$underline\!$reset[\h:$cyan\W$reset]$(_venv_info)" "-> "'
+export PROMPT_COMMAND='EXIT="$?";'${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'__git_ps1 "$underline\!$reset[\h:$cyan\W$reset]$(_venv_info)" "\$(if [ \$EXIT == 0 ]; then echo \"-> \" ; else echo \"\[\e[0;91m\]-> \[\e[0m\]\"; fi )"'
 # export PS1='\!-[\h:\W]$(__git_ps1)->'
+
+# PROMPT_COMMAND="__prompt_command" # Func to gen PS1 after CMDs
+
+# __prompt_command() {
+#     local EXIT="$?"             # This needs to be first
+#     PS1=""
+
+#     local RCol='\[\e[0m\]'
+
+#     local Red='\[\e[0;31m\]'
+#     local Gre='\[\e[0;32m\]'
+#     local BYel='\[\e[1;33m\]'
+#     local BBlu='\[\e[1;34m\]'
+#     local Pur='\[\e[0;35m\]'
+
+#     if [ $EXIT != 0 ]; then
+#         PS1+="${Red}\u${RCol}"      # Add red if exit code non 0
+#     else
+#         PS1+="${Gre}\u${RCol}"
+#     fi
+
+#     PS1+="${RCol}@${BBlu}\h ${Pur}\W${BYel}$ ${RCol}"
+# }
+
 
 # Convenience Variable
 export W=~/Workspace
