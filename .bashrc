@@ -53,16 +53,20 @@ function ch {
   fi
   
   # - as an argument pops the host stack
-  if [ $1 == "-" ]; then
+  if [ $1 == "-" ] || [ $1 == ".." ]; then
     if [[ $SSH_CLIENT ]]; then
       exit
     else
-      return 1
+      return 1 # no-op
     fi
   fi
 
   # ssh into the host, while preserving current directory
-  ssh $1 -t "cd ${PWD/#$HOME/\$HOME};exec \$SHELL -l"
+  ssh $1 -o LogLevel=QUIET -t "cd ${PWD/#$HOME/\$HOME};bash -l" 
+  # nwd=$(ssh $1 -t "cd ${PWD/#$HOME/\$HOME};bash -il >/dev/tty; echo \$PWD")
+  # echo "returned"
+  # echo $nwd
+  # exec \$SHELL -l if I have this command availabe in another shell?
 
   # Catch intent to recurse to our root host
   if [[ $? -eq 5 ]] && [[ $SSH_CLIENT ]]; then

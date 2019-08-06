@@ -16,4 +16,4 @@ alias lookieee="find /n/ironwood/y/fessler/l/tex/biblio/jour/ /n/ironwood/y/fess
 alias @u='/n/ironwood/y/fessler/l/src/script/bib/@u'
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source .local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper.sh

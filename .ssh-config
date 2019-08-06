@@ -6,6 +6,7 @@ Host *
 Host loj
   HostName ir58.eecs.umich.edu
   User cblocker
+  RemoteForward 52698 localhost:52698
 
 Host ir58
   HostName ir58.eecs.umich.edu
@@ -47,6 +48,7 @@ Host apollo
   HostName cjblocker.ddns.net
   Port 26
   User cblocker
+  RemoteForward 52698 localhost:52698
 
 Host autograder
   HostName autograder.eecs.umich.edu
